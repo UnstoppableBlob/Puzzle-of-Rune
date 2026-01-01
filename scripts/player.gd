@@ -15,12 +15,17 @@ func _physics_process(delta: float) -> void:
 			anim_sprite.play("walk_back")
 			move(Vector2(0, -1))
 		elif Input.is_action_pressed("down") and !$down.is_colliding():
+			anim_sprite.play("walk_front")
 			move(Vector2(0, 1))
 		elif Input.is_action_pressed("left") and !$left.is_colliding():
+			anim_sprite.flip_h = true
+			anim_sprite.play("walk_right")
 			move(Vector2(-1, 0))
 		elif Input.is_action_pressed("right") and !$right.is_colliding():
+			anim_sprite.flip_h = false
+			anim_sprite.play("walk_right")
 			move(Vector2(1, 0))
-	
+	 
 func move(dir: Vector2):
 	global_position += dir * tile_size
 	anim_sprite.global_position -= dir * tile_size
