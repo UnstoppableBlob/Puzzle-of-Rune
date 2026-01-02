@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal tile_stepped(tile_pos: Vector2i)
 
 @onready var anim_sprite = $AnimatedSprite2D
 @onready var colshape = $CollisionShape2D
@@ -42,6 +43,7 @@ func _physics_process(delta: float) -> void:
 	 
 func move(dir: Vector2):
 	global_position += dir * tile_size
+	tile_stepped.emit(Vector2i(global_position / tile_size))
 	anim_sprite.global_position -= dir * tile_size
 	
 	if sprite_node_pos_tween:
