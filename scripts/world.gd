@@ -3,6 +3,7 @@ extends Node2D
 @onready var tilemap = $TileMap 
 @onready var player = $CharacterBody2D
 
+var level_list = [37]
 
 var ice_states: Dictionary = {}
 var processing_tiles = {}
@@ -11,6 +12,7 @@ const ICE_REGULAR = Vector2i(37, 23)
 const ICE_CRACKED = Vector2i(38, 23) 
 const ICE_HOLE = Vector2i(38, 22)     
 
+var level = 1
 var total_ice = 0
 var cracked_ice = 0
 
@@ -46,7 +48,7 @@ func _on_player_stepped(tile_pos: Vector2i):
 		cracked_ice += 1
 		print(cracked_ice)
 		
-		if cracked_ice == total_ice:
+		if cracked_ice == level_list[level-1]:
 			done()
 
 		
@@ -62,3 +64,4 @@ func _on_player_stepped(tile_pos: Vector2i):
 
 func done():
 	print('done')
+	level += 1
