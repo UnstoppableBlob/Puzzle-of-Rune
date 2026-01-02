@@ -72,3 +72,4 @@ func teleport(new_position: Vector2):
 func fall():
 	anim_player.play("fall")
 	await anim_player.animation_finished
+	
