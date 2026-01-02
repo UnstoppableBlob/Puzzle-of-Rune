@@ -24,6 +24,8 @@ func _on_player_stepped(tile_pos: Vector2i):
 	
 	var current_state = ice_states[tile_pos]
 	
+	#await get_tree().create_timer(0.25).timeout
+	
 	if current_state == 0: 
 		ice_states[tile_pos] = 1
 		tilemap.set_cell(0, tile_pos, 0, ICE_CRACKED)
