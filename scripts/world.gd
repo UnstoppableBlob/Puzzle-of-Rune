@@ -41,6 +41,7 @@ func _on_player_stepped(tile_pos: Vector2i):
 	elif current_state == 1:  
 		ice_states[tile_pos] = 2
 		tilemap.set_cell(0, tile_pos, 0, ICE_HOLE)
+		player.fall()
 	
 
 	await get_tree().create_timer(0.5).timeout
