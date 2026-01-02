@@ -43,7 +43,9 @@ func _physics_process(delta: float) -> void:
 	 
 func move(dir: Vector2):
 	global_position += dir * tile_size
-	tile_stepped.emit(Vector2i(global_position / tile_size))
+	
+	var current_tile = Vector2i(round(global_position.x / tile_size.x), round(global_position.y / tile_size.y))
+	
 	anim_sprite.global_position -= dir * tile_size
 	
 	if sprite_node_pos_tween:
@@ -52,5 +54,6 @@ func move(dir: Vector2):
 	sprite_node_pos_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	sprite_node_pos_tween.tween_property(anim_sprite, "global_position", global_position, 0.25).set_trans(Tween.TRANS_LINEAR)
 	
-	
+	await sprite_node_pos_tween.finished
+	tile_stepped.emit(current_tile)
 	
