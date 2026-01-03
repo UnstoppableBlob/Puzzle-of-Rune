@@ -11,9 +11,10 @@ signal tile_stepped(tile_pos: Vector2i)
 
 const tile_size: Vector2 = Vector2(16, 16)
 
+#var is_teleporting = false
 var sprite_node_pos_tween: Tween
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if input_enable:
 		if !sprite_node_pos_tween or !sprite_node_pos_tween.is_running():
 			if Input.is_action_pressed("up") and !$up.is_colliding():
@@ -57,13 +58,18 @@ func move(dir: Vector2):
 	sprite_node_pos_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	sprite_node_pos_tween.tween_property(anim_sprite, "global_position", global_position, 0.25).set_trans(Tween.TRANS_LINEAR)
 	
+	#is_teleporting = false
+	
 	await sprite_node_pos_tween.finished
+	
+	#if !is_teleporting:
 	tile_stepped.emit(Vector2i(target_tile))
 	
 
 
 	
 func teleport(new_position: Vector2):
+	#is_teleporting = true
 	
 	if sprite_node_pos_tween:
 		sprite_node_pos_tween.kill()

@@ -24,5 +24,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		var player = area.get_parent()
 		
 		if player.has_method("teleport"):
+			await get_tree().create_timer(0.26).timeout
 			player.teleport(green.global_position + Vector2(8, 8))
 	
