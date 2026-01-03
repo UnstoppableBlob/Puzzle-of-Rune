@@ -3,7 +3,7 @@ extends Node2D
 @onready var tilemap = $TileMap 
 @onready var player = $CharacterBody2D
 
-var level_list = [37, 18]
+var level_list = Transition.levels
 
 var barriers: Dictionary = {}
 var ice_states: Dictionary = {}
@@ -60,25 +60,38 @@ func _on_player_stepped(tile_pos: Vector2i):
 		player.fall()
 	
 
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(1).timeout
 	processing_tiles.erase(tile_pos)
 
 
 func done():
 	print('done')
 	
+	var new_ice_tiles = []
 	if barriers.has(level):
 		for pos in barriers[level]:
-			tilemap.set_cell(0, pos, 0, ICE_SOLID)
+			tilemap.set_cell(0, pos, 0, ICE_CRACKED)
+			ice_states[pos] = 0
+			total_ice += 1
+			new_ice_tiles.append(pos)
+			processing_tiles[pos] = true
 	
 	level += 1
-
+	
+	await get_tree().create_timer(0.3).timeout
+	
+	#processing_tiles.clear()
+	
+	#await get_tree().process_frame
+	for pos in new_ice_tiles:
+		processing_tiles.erase(pos)
+	
+	#await get_tree().create_timer(0.6).timeout
+	#for pos in barriers[level - 1]:
+		#processing_tiles.erase(pos)
 
 func setup_barriers():
 	barriers[1] = [
 		Vector2i(7, -1)
-	]
-	barriers[2] = [
-		Vector2i(11, -10)
 	]
 	
