@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var green = $TileMap2
 @export var green_pos = Vector2i()
+@export var level_needed = 2
 
 func _ready() -> void:
 	green.position = green_pos*16
@@ -18,10 +19,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	#if area.get_parent().has_node("AnimatedSprite2D"):
 		#area.get_parent().get_node("AnimatedSprite2D").global_position = area.get_parent().global_position
 		
-	
-	print("player stepped into portal")
-	var player = area.get_parent()
-	
-	if player.has_method("teleport"):
-		player.teleport(green.global_position + Vector2(8, 8))
+	if level_needed == Transition.level:
+		print("player stepped into portal")
+		var player = area.get_parent()
+		
+		if player.has_method("teleport"):
+			player.teleport(green.global_position + Vector2(8, 8))
 	

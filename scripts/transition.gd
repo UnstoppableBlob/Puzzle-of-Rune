@@ -4,7 +4,10 @@ signal on_transition_finished
 
 @onready var color_rect = $ColorRect
 @onready var animation_player = $anim_player
+
 var levels = [37]
+var level = 1
+
 func _ready() -> void:
 	if color_rect:
 		color_rect.visible = false

@@ -14,7 +14,6 @@ const ICE_CRACKED = Vector2i(38, 23)
 const ICE_HOLE = Vector2i(38, 22) 
 const ICE_SOLID = Vector2i(39, 23)    
 
-var level = 1
 var total_ice = 0
 var cracked_ice = 0
 
@@ -57,7 +56,7 @@ func _on_player_stepped(tile_pos: Vector2i):
 		cracked_ice += 1
 		print(cracked_ice)
 
-		if cracked_ice == level_list[level-1]:
+		if cracked_ice == level_list[Transition.level-1]:
 			done()
 
 	elif current_state == 1:  
@@ -76,7 +75,7 @@ func done():
 		#for pos in barriers[level]:
 			#tilemap.set_cell(0, pos, 0, ICE_SOLID)
 	bar.disabled = true
-	level += 1
+	Transition.level += 1
 	
 	
 func setup_barriers():
