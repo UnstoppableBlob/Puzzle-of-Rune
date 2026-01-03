@@ -67,7 +67,7 @@ func teleport(new_position: Vector2):
 		sprite_node_pos_tween.kill()
 	global_position = new_position
 	anim_sprite.global_position = new_position
-	
+
 
 func fall():
 	anim_player.play("fall")
