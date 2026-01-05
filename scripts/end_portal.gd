@@ -18,12 +18,12 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	#)
 	#if area.get_parent().has_node("AnimatedSprite2D"):
 		#area.get_parent().get_node("AnimatedSprite2D").global_position = area.get_parent().global_position
-		
-	if level_needed == Transition.level:
-		print("player stepped into portal")
-		var player = area.get_parent()
-		
-		if player.has_method("teleport"):
-			await get_tree().create_timer(0.26).timeout
-			player.teleport(green.global_position + Vector2(8, 8))
+	
+	print("player stepped into portal")	
+	var player = area.get_parent()
+	
+	if player.has_method("teleport"):
+		await get_tree().create_timer(0.26).timeout
+		#player.teleport(green.global_position + Vector2(8, 8))
+		get_tree().change_scene_to_file("res://scenes/level_2.tscn")
 	

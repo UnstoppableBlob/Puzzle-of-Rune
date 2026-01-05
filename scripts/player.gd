@@ -80,4 +80,5 @@ func teleport(new_position: Vector2):
 func fall():
 	anim_player.play("fall")
 	await anim_player.animation_finished
+	Transition.level = 1
 	get_tree().reload_current_scene()
