@@ -6,6 +6,7 @@ extends Node2D
 
 func _ready() -> void:
 	green.position = green_pos*16
+	green.visible = false
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	#print("player stepped into portal")
