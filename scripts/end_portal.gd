@@ -26,5 +26,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if player.has_method("teleport"):
 		await get_tree().create_timer(0.26).timeout
 		#player.teleport(green.global_position + Vector2(8, 8))
-		get_tree().change_scene_to_file("res://scenes/level_2.tscn")
+		if level_needed == 2:
+			get_tree().change_scene_to_file("res://scenes/level_2.tscn")
+		if level_needed == 3:
+			get_tree().change_scene_to_file("res://scenes/level_3.tscn")
 	

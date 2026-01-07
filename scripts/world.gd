@@ -54,10 +54,11 @@ func _on_player_stepped(tile_pos: Vector2i):
 		ice_states[tile_pos] = 1
 		tilemap.set_cell(0, tile_pos, 0, ICE_CRACKED)
 		cracked_ice += 1
-		print(cracked_ice)
-
-		if cracked_ice == level_list[Transition.level-1]:
-			done()
+		
+		print(Transition.level)
+		if level_list[Transition.level-1]:
+			if cracked_ice == level_list[Transition.level-1]:
+				done()
 
 	elif current_state == 1:  
 		ice_states[tile_pos] = 2
@@ -76,7 +77,7 @@ func done():
 			#tilemap.set_cell(0, pos, 0, ICE_SOLID)
 	bar.disabled = true
 	Transition.level += 1
-	
+	print(Transition.level)
 	
 func setup_barriers():
 	barriers[1] = [
@@ -85,5 +86,5 @@ func setup_barriers():
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D:
-		print("wiwi baguetete")
+	#if body is CharacterBody2D:
+	pass
