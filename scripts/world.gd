@@ -56,9 +56,8 @@ func _on_player_stepped(tile_pos: Vector2i):
 		cracked_ice += 1
 		
 		print(Transition.level)
-		if level_list[Transition.level-1]:
-			if cracked_ice == level_list[Transition.level-1]:
-				done()
+		if cracked_ice == level_list[Transition.level-1]:
+			done()
 
 	elif current_state == 1:  
 		ice_states[tile_pos] = 2
