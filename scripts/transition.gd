@@ -5,7 +5,7 @@ signal on_transition_finished
 @onready var color_rect = $ColorRect
 @onready var animation_player = $anim_player
 
-var levels = [7, 13, 21, 22]
+var levels = [7, 13, 21, 21, 0]
 var level = 1
 
 func _ready() -> void:
