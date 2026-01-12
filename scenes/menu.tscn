@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxoqketaf2lu7"]
+
+[ext_resource type="Script" uid="uid://dqfy3vbw68ytn" path="res://scripts/menu.gd" id="1_vjb58"]
+[ext_resource type="FontFile" uid="uid://feljwnyj3ovj" path="res://assets/m6x11.ttf" id="2_con2f"]
+[ext_resource type="StyleBox" uid="uid://5tc3vkdqnmyy" path="res://menu.tres" id="3_con2f"]
+[ext_resource type="StyleBox" uid="uid://bwpse75bg5odo" path="res://button_hover.tres" id="4_mhnvy"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vjb58")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.50030726, 0.5985942, 0.61360866, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -540.0
+offset_right = 540.0
+offset_bottom = 266.375
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.39215687, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_con2f")
+theme_override_font_sizes/font_size = 192
+text = "Puzzle of Rune"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -102.395004
+offset_right = 350.0
+offset_bottom = 297.60547
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.19607843, 0.85490197, 0.5647059, 1)
+theme_override_colors/font_focus_color = Color(0.19607843, 0.85490197, 0.5647059, 1)
+theme_override_colors/font_pressed_color = Color(0.19607843, 0.85490197, 0.5647059, 1)
+theme_override_colors/font_hover_color = Color(0.19607843, 0.85490197, 0.5647059, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.19607843, 0.85490197, 0.5647059, 1)
+theme_override_fonts/font = ExtResource("2_con2f")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = ExtResource("3_con2f")
+theme_override_styles/hover = ExtResource("4_mhnvy")
+text = "Play"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.19607843, 0.85490197, 0.5647059, 1)
+theme_override_colors/font_focus_color = Color(0.19607843, 0.85490197, 0.5647059, 1)
+theme_override_colors/font_pressed_color = Color(0.19607843, 0.85490197, 0.5647059, 1)
+theme_override_colors/font_hover_color = Color(0.19607843, 0.85490197, 0.5647059, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.19607843, 0.85490197, 0.5647059, 1)
+theme_override_fonts/font = ExtResource("2_con2f")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = ExtResource("3_con2f")
+theme_override_styles/hover = ExtResource("4_mhnvy")
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
