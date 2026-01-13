@@ -4,10 +4,10 @@ extends Node2D
 @export var green_pos = Vector2i()
 @export var level_needed = 2
 
-const level_2 = preload("res://scenes/level_2.tscn")
-const level_3 = preload("res://scenes/level_3.tscn")
-const level_4 = preload("res://scenes/level_4.tscn")
-const done = preload("res://scenes/menu.tscn")
+const level_2 = "res://scenes/level_2.tscn"
+const level_3 = "res://scenes/level_3.tscn"
+const level_4 = "res://scenes/level_4.tscn"
+const done = "res://scenes/menu.tscn"
 
 
 func _ready() -> void:
@@ -33,10 +33,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		await get_tree().create_timer(0.26).timeout
 		#player.teleport(green.global_position + Vector2(8, 8))
 		if level_needed == 2:
-			get_tree().change_scene_to_packed(level_2)
+			get_tree().change_scene_to_file(level_2)
 		if level_needed == 3:
-			get_tree().change_scene_to_packed(level_3)
+			get_tree().change_scene_to_file(level_3)
 		if level_needed == 4:
-			get_tree().change_scene_to_packed(level_4)
+			get_tree().change_scene_to_file(level_4)
 		if level_needed == 5:
-			get_tree().change_scene_to_packed(done)
+			get_tree().change_scene_to_file(done)
